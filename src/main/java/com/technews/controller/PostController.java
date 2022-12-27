@@ -2,6 +2,7 @@ package com.technews.controller;
 
 import com.technews.model.Post;
 import com.technews.model.Vote;
+import com.technews.model.User;
 import com.technews.repository.PostRepository;
 import com.technews.repository.UserRepository;
 import com.technews.repository.VoteRepository;
@@ -60,7 +61,7 @@ public class PostController {
         if(request.getSession(false) != null) {
             Post returnPost = null;
 
-            User sessionUser = request.getSession().getAttribute("SESSION_USER");
+            User sessionUser = (User) request.getSession().getAttribute("SESSION_USER");
             vote.setUserId(sessionUser.getId());
             voteRepository.save(vote);
 
